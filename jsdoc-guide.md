@@ -23,16 +23,16 @@ function foo(n) {
 
 #### Types
 
-```javascript
-@param {string=} n	Optional
-@param {string} [n]	Optional
-@param {(string|number)} n	Multiple types
-@param {*} n	Any type
-@param {...string} n	Repeatable arguments
-@param {string} [n="hi"]	Optional with default
-@param {string[]} n	Array of strings
-@return {Promise<string[]>} n	Promise fulfilled by array of strings
-```
+| Type                            | Description                           |
+| ------------------------------- | ------------------------------------- |
+| `@param {string=} n`            | Optional                              |
+| `@param {string} [n]`           | Optional                              |
+| `@param {(string|number)} n`    | Multiple types                        |
+| `@param {*} n`                  | Any type                              |
+| `@param {...string} n`          | Repeatable arguments                  |
+| `@param {string} [n="hi"]`      | Optional with default                 |
+| `@param {string[]} n`           | Array of strings                      |
+| `@return {Promise<string[]>} n` | Promise fulfilled by array of strings |
 
 #### Variables
 
