@@ -1,120 +1,152 @@
-# JSDoc Example
+# Learn JSDoc 
 
-* *[Setup Guide](setup-guide.md)*
+
+An API documentation generator for JavaScript.
+
+* *[JSDoc Guide](jsdoc-guide.md)*
 * *[Live Example](https://learning-zone.github.io/general-interview-questions/jsdoc-example/docs/)*
 
+## Installation and Setup
 
-#### Functions
 
-```javascript
-/**
- * This is a function.
- *
- * @param {string} n - A string param
- * @return {string} A good string
- *
- * @example
- *
- *     foo('hello')
- */
+**Step 01**: 
 
-function foo(n) {
-  return n
+To install the latest version on npm globally
+
+    npm install -g jsdoc
+
+
+To install the latest version on npm locally and save it in your package's
+`package.json` file:
+
+    npm install --save-dev jsdoc
+
+**Step 02**:
+
+Create a `package.json` file inside jsdoc-example folder using below command
+
+```
+    npm init -y
+```
+```
+{
+  "name": "jsdoc-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "doc": "jsdoc -c jsdoc.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jsdoc": "^3.6.4"
+  }
+}
+
+```
+**Step 03**:  
+
+Create a `jsdoc.json` file inside jsdoc-example folder
+
+```
+{
+    "source": {
+        "include": ["src"],
+        "includePattern": ".js$",
+        "excludePattern": "(node_modules/|docs)"
+    },
+    "plugins": ["plugins/markdown"],
+    "templates": {
+        "cleverLinks": true,
+        "monospaceLinks": true
+    },
+    "opts": {
+        "recurse": true,
+        "destination": "./docs",
+        "template": "./custom-template",
+        "tutorials": "./tutorials",
+        "readme": "./README.md"
+    }
 }
 ```
+**Step 04**:
 
-#### Types
-
-```javascript
-@param {string=} n	Optional
-@param {string} [n]	Optional
-@param {(string|number)} n	Multiple types
-@param {*} n	Any type
-@param {...string} n	Repeatable arguments
-@param {string} [n="hi"]	Optional with default
-@param {string[]} n	Array of strings
-@return {Promise<string[]>} n	Promise fulfilled by array of strings
-```
-
-#### Variables
+Create a src folder and add the following code
 
 ```javascript
 /**
- * @type {number}
+ * Class to create a person object
  */
-var num = 1
-/**
- * @const {number}
- */
-const num = 1
+class Person {
+  /**
+   * 
+   * @param {Object} personInfo Information about the person 
+   */
+  constructor(personInfo) {
+      /**
+       * @property {string} name Person Name
+       */
+      this.name = personInfo.name;
+      /**
+       * @property {string} name Person Age
+       */
+      this.age = personInfo.age
+  }
+  
+  /**
+   * @property {Function} greet A greeting with the name and age
+   * @returns void
+   */
+  greet() {
+      console.log(`Hello, my name is ${this.name} and I am ${this.age}`);
+  }
+}
 ```
-
-#### Typedef
-
-```javascript
-/**
- * A song
- * @typedef {Object} Song
- * @property {string} title - The title
- * @property {string} artist - The artist
- * @property {number} year - The year
- */
-/**
- * Plays a song
- * @param {Song} song - The {@link Song} to be played
- */
-
-function play(song) {}
+Now run jsdoc in your command line
 ```
-
-#### Typedef Shorthand
-
-```javascript
-/**
- * A song
- * @typedef {{title: string, artist: string, year: number}} Song
- */
-/**
- * Plays a song
- * @param {Song} song - The {@link Song} to be played
- */
-
-function play(song) {}
+    npm run doc
 ```
+This will create the docs directory which contains the mini-documentation for the Person Class. Open the docs/index.html file in your browser
 
-#### Importing types
+<img src="../assets/jsdoc.png" alt="JSDoc Image" />
 
-```javascript
-/**
- * @typedef {import('./Foo').default} Bar
- */
 
-/**
- * @param {Bar} x
- */
+### Templates
 
-function test(x) {}
-```
++ [jaguarjs-jsdoc](https://github.com/davidshimjs/jaguarjs-jsdoc)
++ [DocStrap](https://github.com/docstrap/docstrap)
+([example](https://docstrap.github.io/docstrap))
++ [jsdoc3Template](https://github.com/DBCDK/jsdoc3Template)
+  ([example](https://github.com/danyg/jsdoc3Template/wiki#wiki-screenshots))
++ [minami](https://github.com/Nijikokun/minami)
++ [docdash](https://github.com/clenemt/docdash)
+([example](http://clenemt.github.io/docdash/))
++ [tui-jsdoc-template](https://github.com/nhnent/tui.jsdoc-template)
+([example](https://nhnent.github.io/tui.jsdoc-template/latest/))
++ [better-docs](https://github.com/SoftwareBrothers/better-docs)
+([example](https://softwarebrothers.github.io/admin-bro-dev/index.html))
 
-#### Other keywords
+### Build tools
 
-```javascript
-/**
- * @throws {FooException}
- * @private
- * @deprecated
- * @see
- *
- * @function
- * @class
- */
-```
++ [JSDoc Grunt plugin](https://github.com/krampstudio/grunt-jsdoc)
++ [JSDoc Gulp plugin](https://github.com/mlucool/gulp-jsdoc3)
++ [JSDoc GitHub Action](https://github.com/andstor/jsdoc-action)
 
-#### Renaming
+### Other tools
 
-```javascript
-/*
- * @alias Foo.bar
- * @name Foo.bar
- */
-```
++ [jsdoc-to-markdown](https://github.com/jsdoc2md/jsdoc-to-markdown)
++ [Integrating GitBook with
+JSDoc](https://medium.com/@kevinast/integrate-gitbook-jsdoc-974be8df6fb3)
+
+## For more information
+
++ Documentation is available at [jsdoc.app](https://jsdoc.app/).
++ Contribute to the docs at
+[jsdoc/jsdoc.github.io](https://github.com/jsdoc/jsdoc.github.io).
++ [Join JSDoc's Slack channel](https://jsdoc-slack.appspot.com/).
++ Ask for help on the
+[JSDoc Users mailing list](http://groups.google.com/group/jsdoc-users).
++ Post questions tagged `jsdoc` to
+[Stack Overflow](http://stackoverflow.com/questions/tagged/jsdoc).
