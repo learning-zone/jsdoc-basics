@@ -4,7 +4,7 @@
 An API documentation generator for JavaScript.
 
 * *[JSDoc Guide](jsdoc-guide.md)*
-* *[Live Example](https://learning-zone.github.io/general-interview-questions/jsdoc-example/docs/)*
+* *[Live Example](https://learning-zone.github.io/jsdoc-tutorial/docs/)*
 
 ## Installation and Setup
 
