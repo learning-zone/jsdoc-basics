@@ -32,13 +32,16 @@ Create a `package.json` file inside jsdoc-example folder using below command
 {
   "name": "jsdoc-example",
   "version": "1.0.0",
-  "description": "",
+  "description": "An API documentation generator for JavaScript.",
   "main": "index.js",
   "scripts": {
     "doc": "jsdoc -c jsdoc.json"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "documentation",
+    "javascript"
+  ],
+  "author": "pradeep.vwa@gmail.com",
   "license": "ISC",
   "devDependencies": {
     "jsdoc": "^3.6.4"
