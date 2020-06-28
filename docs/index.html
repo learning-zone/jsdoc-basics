@@ -17,7 +17,8 @@
 
 <div id="main">
 
-  
+    
+
     
 
 
@@ -42,102 +43,110 @@
 
 
     <section>
-        <article><h1>JSDoc Example</h1>
+        <article><h1>JSDoc Tutorial</h1>
+<p>An API documentation generator for JavaScript.</p>
 <ul>
-<li><em><a href="setup-guide.md">Setup Guide</a></em></li>
-<li><em><a href="https://learning-zone.github.io/general-interview-questions/jsdoc-example/docs/">Live Example</a></em></li>
+<li><em><a href="jsdoc-guide.md">JSDoc Guide</a></em></li>
+<li><em><a href="https://learning-zone.github.io/jsdoc-tutorial/docs/">Live Example</a></em></li>
 </ul>
-<h4>Functions</h4>
-<pre class="prettyprint source lang-javascript"><code>/**
- * This is a function.
- *
- * @param {string} n - A string param
- * @return {string} A good string
- *
- * @example
- *
- *     foo('hello')
- */
+<h2>Installation and Setup</h2>
+<p><strong>Step 01</strong>:</p>
+<p>To install the latest version on npm globally</p>
+<pre><code>npm install -g jsdoc
+</code></pre>
+<p>To install the latest version on npm locally and save it in your package's
+<code>package.json</code> file:</p>
+<pre><code>npm install --save-dev jsdoc
+</code></pre>
+<p><strong>Step 02</strong>:</p>
+<p>Create a <code>package.json</code> file inside jsdoc-example folder using below command</p>
+<pre class="prettyprint source"><code>    npm init -y
+</code></pre>
+<pre class="prettyprint source"><code>{
+  &quot;name&quot;: &quot;jsdoc-example&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;doc&quot;: &quot;jsdoc -c jsdoc.json&quot;
+  },
+  &quot;keywords&quot;: [],
+  &quot;author&quot;: &quot;&quot;,
+  &quot;license&quot;: &quot;ISC&quot;,
+  &quot;devDependencies&quot;: {
+    &quot;jsdoc&quot;: &quot;^3.6.4&quot;
+  }
+}
 
-function foo(n) {
-  return n
+</code></pre>
+<p><strong>Step 03</strong>:</p>
+<p>Create a <code>jsdoc.json</code> file inside jsdoc-example folder</p>
+<pre class="prettyprint source"><code>{
+    &quot;source&quot;: {
+        &quot;include&quot;: [&quot;src&quot;],
+        &quot;includePattern&quot;: &quot;.js$&quot;,
+        &quot;excludePattern&quot;: &quot;(node_modules/|docs)&quot;
+    },
+    &quot;plugins&quot;: [&quot;plugins/markdown&quot;],
+    &quot;templates&quot;: {
+        &quot;cleverLinks&quot;: true,
+        &quot;monospaceLinks&quot;: true
+    },
+    &quot;opts&quot;: {
+        &quot;recurse&quot;: true,
+        &quot;destination&quot;: &quot;./docs&quot;,
+        &quot;template&quot;: &quot;./custom-template&quot;,
+        &quot;tutorials&quot;: &quot;./tutorials&quot;,
+        &quot;readme&quot;: &quot;./README.md&quot;
+    }
 }
 </code></pre>
-<h4>Types</h4>
-<pre class="prettyprint source lang-javascript"><code>@param {string=} n	Optional
-@param {string} [n]	Optional
-@param {(string|number)} n	Multiple types
-@param {*} n	Any type
-@param {...string} n	Repeatable arguments
-@param {string} [n=&quot;hi&quot;]	Optional with default
-@param {string[]} n	Array of strings
-@return {Promise&lt;string[]>} n	Promise fulfilled by array of strings
-</code></pre>
-<h4>Variables</h4>
+<p><strong>Step 04</strong>:</p>
+<p>Create a src folder and add the following code</p>
 <pre class="prettyprint source lang-javascript"><code>/**
- * @type {number}
+ * Class to create a person object
  */
-var num = 1
-/**
- * @const {number}
- */
-const num = 1
+class Person {
+  /**
+   * 
+   * @param {Object} personInfo Information about the person 
+   */
+  constructor(personInfo) {
+      /**
+       * @property {string} name Person Name
+       */
+      this.name = personInfo.name;
+      /**
+       * @property {string} name Person Age
+       */
+      this.age = personInfo.age
+  }
+  
+  /**
+   * @property {Function} greet A greeting with the name and age
+   * @returns void
+   */
+  greet() {
+      console.log(`Hello, my name is ${this.name} and I am ${this.age}`);
+  }
+}
 </code></pre>
-<h4>Typedef</h4>
-<pre class="prettyprint source lang-javascript"><code>/**
- * A song
- * @typedef {Object} Song
- * @property {string} title - The title
- * @property {string} artist - The artist
- * @property {number} year - The year
- */
-/**
- * Plays a song
- * @param {Song} song - The <code>Song</code> to be played
- */
-
-function play(song) {}
+<p>Now run jsdoc in your command line</p>
+<pre class="prettyprint source"><code>    npm run doc
 </code></pre>
-<h4>Typedef Shorthand</h4>
-<pre class="prettyprint source lang-javascript"><code>/**
- * A song
- * @typedef {{title: string, artist: string, year: number}} Song
- */
-/**
- * Plays a song
- * @param {Song} song - The <code>Song</code> to be played
- */
-
-function play(song) {}
-</code></pre>
-<h4>Importing types</h4>
-<pre class="prettyprint source lang-javascript"><code>/**
- * @typedef {import('./Foo').default} Bar
- */
-
-/**
- * @param {Bar} x
- */
-
-function test(x) {}
-</code></pre>
-<h4>Other keywords</h4>
-<pre class="prettyprint source lang-javascript"><code>/**
- * @throws {FooException}
- * @private
- * @deprecated
- * @see
- *
- * @function
- * @class
- */
-</code></pre>
-<h4>Renaming</h4>
-<pre class="prettyprint source lang-javascript"><code>/*
- * @alias Foo.bar
- * @name Foo.bar
- */
-</code></pre></article>
+<p>This will create the docs directory which contains the mini-documentation for the <strong>Person Class</strong>. Open the <strong>docs/index.html</strong> file in your browser</p>
+<img src="assets/jsdoc.png" alt="JSDoc Image" />
+<h2>For more information</h2>
+<ul>
+<li>Documentation is available at <a href="https://jsdoc.app/">jsdoc.app</a>.</li>
+<li>Contribute to the docs at
+<a href="https://github.com/jsdoc/jsdoc.github.io">jsdoc/jsdoc.github.io</a>.</li>
+<li><a href="https://jsdoc-slack.appspot.com/">Join JSDoc's Slack channel</a>.</li>
+<li>Ask for help on the
+<a href="http://groups.google.com/group/jsdoc-users">JSDoc Users mailing list</a>.</li>
+<li>Post questions tagged <code>jsdoc</code> to
+<a href="http://stackoverflow.com/questions/tagged/jsdoc">Stack Overflow</a>.</li>
+</ul></article>
     </section>
 
 
@@ -189,7 +198,7 @@ function test(x) {}
     <dt class="tag-author">Author:</dt>
     <dd class="tag-author">
         <ul>
-            <li>Brad Traversy</li>
+            <li>Pradeep Kumar</li>
         </ul>
     </dd>
     
@@ -213,7 +222,7 @@ function test(x) {}
     <dt class="tag-see">See:</dt>
     <dd class="tag-see">
         <ul>
-            <li><a href="https://traversymedia.com"> Traversy Media </a></li>
+            <li><a href="https://learning-zone.github.io/jsdoc-tutorial/"> JSDoc Tutorial </a></li>
         </ul>
     </dd>
     
@@ -261,7 +270,7 @@ function test(x) {}
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sun Jun 28 2020 16:08:39 GMT+0530 (India Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sun Jun 28 2020 16:45:04 GMT+0530 (India Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
