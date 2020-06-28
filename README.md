@@ -113,33 +113,6 @@ This will create the docs directory which contains the mini-documentation for th
 <img src="assets/jsdoc.png" alt="JSDoc Image" />
 
 
-### Templates
-
-+ [jaguarjs-jsdoc](https://github.com/davidshimjs/jaguarjs-jsdoc)
-+ [DocStrap](https://github.com/docstrap/docstrap)
-([example](https://docstrap.github.io/docstrap))
-+ [jsdoc3Template](https://github.com/DBCDK/jsdoc3Template)
-  ([example](https://github.com/danyg/jsdoc3Template/wiki#wiki-screenshots))
-+ [minami](https://github.com/Nijikokun/minami)
-+ [docdash](https://github.com/clenemt/docdash)
-([example](http://clenemt.github.io/docdash/))
-+ [tui-jsdoc-template](https://github.com/nhnent/tui.jsdoc-template)
-([example](https://nhnent.github.io/tui.jsdoc-template/latest/))
-+ [better-docs](https://github.com/SoftwareBrothers/better-docs)
-([example](https://softwarebrothers.github.io/admin-bro-dev/index.html))
-
-### Build tools
-
-+ [JSDoc Grunt plugin](https://github.com/krampstudio/grunt-jsdoc)
-+ [JSDoc Gulp plugin](https://github.com/mlucool/gulp-jsdoc3)
-+ [JSDoc GitHub Action](https://github.com/andstor/jsdoc-action)
-
-### Other tools
-
-+ [jsdoc-to-markdown](https://github.com/jsdoc2md/jsdoc-to-markdown)
-+ [Integrating GitBook with
-JSDoc](https://medium.com/@kevinast/integrate-gitbook-jsdoc-974be8df6fb3)
-
 ## For more information
 
 + Documentation is available at [jsdoc.app](https://jsdoc.app/).
