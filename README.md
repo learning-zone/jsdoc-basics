@@ -1,4 +1,4 @@
-# Learn JSDoc 
+# JSDoc Tutorial 
 
 
 An API documentation generator for JavaScript.
