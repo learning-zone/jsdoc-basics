@@ -27,7 +27,7 @@ function foo(n) {
 | ------------------------------- | ------------------------------------- |
 | `@param {string=} n`            | Optional                              |
 | `@param {string} [n]`           | Optional                              |
-| ```@param {(string|number)} n```| Multiple types                        |
+| <code>@param {(string|number)} n</code>| Multiple types                        |
 | `@param {*} n`                  | Any type                              |
 | `@param {...string} n`          | Repeatable arguments                  |
 | `@param {string} [n="hi"]`      | Optional with default                 |
