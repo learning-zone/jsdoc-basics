@@ -1,5 +1,6 @@
-# JSDoc Tutorial 
+# JSDoc Basics
 
+<br/>
 
 An API documentation generator for JavaScript.
 
